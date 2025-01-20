@@ -64,7 +64,7 @@ public class GamePanelS extends JPanel implements ActionListener{
 				}
 				else {
 					g.setColor(Color.blue);
-					//g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255)));
+					//g.setColor(new Color(random.nextInt(255),random.nextInt(255),random.nextInt(255))); ---> for changing colors
 					g.fillRect(x[i], y[i], UNIT_SIZE, UNIT_SIZE);
 				}			
 			}
@@ -121,25 +121,25 @@ public class GamePanelS extends JPanel implements ActionListener{
 	
     
     public void checkCollisions() {
-		//checks if head collides with body
+		//head n body
 		for(int i = bodyParts;i>0;i--) {
 			if((x[0] == x[i])&& (y[0] == y[i])) {
 				running = false;
 			}
 		}
-		//check if head touches left border
+		//head n left border
 		if(x[0] < 0) {
 			running = false;
 		}
-		//check if head touches right border
+		//head n right border
 		if(x[0] > SCREEN_WIDTH) {
 			running = false;
 		}
-		//check if head touches top border
+		//head n top border
 		if(y[0] < 0) {
 			running = false;
 		}
-		//check if head touches bottom border
+		//head n bottom border
 		if(y[0] > SCREEN_HEIGHT) {
 			running = false;
 		}
@@ -151,7 +151,7 @@ public class GamePanelS extends JPanel implements ActionListener{
 	
     
     public void gameOver(Graphics g) {
-		int highscore = 50;
+		
 		@SuppressWarnings("unused")
 		JFrame f = new JFrame();
 		//Score
@@ -159,13 +159,15 @@ public class GamePanelS extends JPanel implements ActionListener{
 		g.setFont( new Font("Times New Roman",Font.BOLD, 30));
 		FontMetrics metrics1 = getFontMetrics(g.getFont());
 		g.drawString("Score: "+applesEaten, (SCREEN_WIDTH - metrics1.stringWidth("Score: "+applesEaten))/2, g.getFont().getSize());
-		//Game Over text
+		
 		g.setColor(Color.white);	
 		g.setFont( new Font("Times New Roman",Font.BOLD, 100));
 		FontMetrics metrics2 = getFontMetrics(g.getFont());
 		g.drawString("Game Over", (SCREEN_WIDTH - metrics2.stringWidth("Game Over"))/2, SCREEN_HEIGHT/2);
 		g.setFont(new Font("Times New Roman", Font.BOLD,50));
-		g.drawString("High Score:"+ highscore, 150, (SCREEN_HEIGHT/2)-100);
+
+		
+
 		//Buttons
 		
 		JButton restartButton = new JButton("RESTART");
